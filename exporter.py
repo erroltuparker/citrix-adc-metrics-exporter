@@ -416,6 +416,9 @@ class CitrixAdcCollector(object):
         if (entity == 'services'):
             return self.get_svc_grp_services_stats()
 
+        if (entity == "nslicense"):
+            url = '%s://%s/nitro/v1/config/%s' % (self.protocol, self.nsip, entity)
+
         if(entity != 'nscapacity' and entity != 'sslcertkey'):
             url = '%s://%s/nitro/v1/stat/%s' % (self.protocol, self.nsip, entity)
         else:
