@@ -5,7 +5,8 @@
             ["disk1avail", "citrixadc_var_partition_free_mb"],
             ["disk1used", "citrixadc_var_partition_used_mb"],
             ["disk0avail", "citrixadc_flash_partition_free_mb"],
-            ["disk0used", "citrixadc_flash_partition_used_mb"]
+            ["disk0used", "citrixadc_flash_partition_used_mb"],
+            ["numcpus", "citrixadc_cpu_number"]
         ],
 
         "gauges": [
@@ -298,7 +299,8 @@
 
         "labels": [
             ["interfacealias", "citrixadc_interface_alias"],
-            ["id", "citrixadc_interface_id"]
+            ["id", "citrixadc_interface_id"],
+            ["curlinkstate", "citrixadc_interface_state"]
         ]
     },
 
@@ -558,5 +560,81 @@
             ["primaryipaddress", "citrixadc_sslvserver_ip"],
             ["state", "citrixadc_sslvserver_state"]
         ]
-    }
+    },
+
+    "gslbservice": {
+        "counters": [
+            ["totalrequestbytes", "citrixadc_gslbservice_request_bytes_total"],
+            ["totalresponsesbytes", "citrixadc_gslbservice_responses_bytes_total"],
+            ["totalresponses", "citrixadc_gslbservice_responses_total"],
+            ["totalrequests", "citrixadc_gslbservice_requests_total"],
+            ["vsvrservicehits", "citrixadc_service_gslbservice_hits"]
+        ],
+        "gauges": [
+            ["vsvrservicehitsrate", "citrixadc_service_gslbservice_hits_rate"],
+            ["requestrate", "citrixadc_service_gslbservice_responses_rate"],
+            ["responsesrate", "citrixadc_service_gslbservice_responses_rate"],
+            ["responsesbyterate", "citrixadc_service_gslbservice_responses_bytes_rate"],
+            ["curclntconnections", "citrixadc_service_gslbservice_current_client_connections"],
+            ["cursrvrconnections", "citrixadc_service_gslbservice_current_server_connections"],
+            ["vsvrservicehitsrate", "citrixadc_service_gslbservice_hits_rate"]
+
+        ],
+        "labels": [
+            ["servicename","citrixadc_gslbservice_name"],
+            ["servicetype","citrixadc_gslbservice_type"],
+            ["state","citrixadc_gslbservice_state"]
+        ]
+
+    },
+
+    "hanode":{
+        "counters": [
+            ["haerrproptimeout","citrixadc_hanode_timeoute"],
+            ["haerrsyncfailure","citrixadc_hanode_syncfailure"],
+            ["hatotpktrx","citrixadc_hanode_heartbeat_received"],
+            ["hatotpkttx","citrixadc_hanode_heartbeat_sent"]
+        ],
+        "gauges": [
+            ["hapktrxrate","citrixadc_hanode_heartbeatpkt_received_rate"],
+            ["hapkttxrate","citrixadc_hanode_heartbeatpkt_sent_rate"]
+        ],
+        "labels": [
+            ["hacurstatus","citrixadc_hanode_status"],
+            ["hacurstate","citrixadc_hanode_state"],
+            ["hacurmasterstate","citrixadc_hanode_masterstate"]
+        ]
+    },
+
+    "authenticationvserver": {
+        "counters": [
+            ["totalrequests", "citrixadc_gslbservice_requests_total"],
+            ["totalrequestbytes", "citrixadc_gslbservice_request_bytes_total"],
+            ["totalresponsesbytes", "citrixadc_gslbservice_responses__bytes_total"],
+            ["totalresponses", "citrixadc_gslbservice_responses_total"]
+        ],
+        "gauges": [
+            ["requestrate", "citrixadc_service_gslbservice_responses_rate"],
+            ["responsesrate", "citrixadc_service_gslbservice_responses_rate"],
+            ["responsesbyterate", "citrixadc_service_gslbservice_responses_bytes_rate"]
+        ],
+        "labels": [
+            ["name","citrixadc_auth_name"],
+            ["type","citrixadc_auth_type"],
+            ["state","citrixadc_auth_state"]
+        ]
+    },
+
+    "nslicense": {
+        "gauges": [
+            ["f_sslvpn_users", "citrixadc_license_sslvpn_users"],
+            ["f_ica_users", "citrixadc_license_ica_users"],
+            ["daystoexpiration","citrix_license_daystoexpiration"]
+        ],
+        "labels":[
+            ["licensingmode","citrixadc_license_mode"],
+            ["cloudsubscriptionimage","citrixadc_license_cloudbased"]
+        ]
+
+    } 
 }
