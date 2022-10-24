@@ -632,8 +632,7 @@
             ["daystoexpiration","citrix_license_daystoexpiration"]
         ],
         "labels":[
-            ["licensingmode","citrixadc_license_mode"],
-            ["cloudsubscriptionimage","citrixadc_license_cloudbased"]
+            ["licensingmode","citrixadc_license_mode"]
         ]
 
     } 
