@@ -209,10 +209,13 @@
             ["requestbytesrate", "citrixadc_services_request_bytes_rate"]
         ],
 
+        "enumasinfo":[
+            ["state", "citrixadc_service_state"]
+        ],
+
         "labels": [
             ["_servicegroup_name", "citrixadc_servicegroup_name"],
             ["servicetype", "citrixadc_service_type"],
-            ["state", "citrixadc_service_state"],
             ["primaryipaddress", "citrixadc_service_ip"],
             ["server_name", "citrixadc_server_name"]
         ]
@@ -246,10 +249,13 @@
             ["activetransactions", "citrixadc_service_active_transactions"]
         ],
 
+        "enumasinfo":[
+            ["state", "citrixadc_service_state"]
+        ],
+
         "labels": [
             ["name", "citrixadc_service_name"],
-            ["servicetype", "citrixadc_service_type"],
-            ["state", "citrixadc_service_state"]
+            ["servicetype", "citrixadc_service_type"]
         ]
     },
 
@@ -356,10 +362,13 @@
             ["svrbusyerrrate", "citrixadc_lb_busy_error_rate"]
         ],
 
+        "enumasinfo":[
+            ["state", "citrixadc_lb_state"]
+        ],
+
         "labels": [
             ["type", "citrixadc_lb_type"],
-            ["name", "citrixadc_lb_name"],
-            ["state", "citrixadc_lb_state"]
+            ["name", "citrixadc_lb_name"]
         ]
     },
 
@@ -414,10 +423,14 @@
             ["establishedconn", "citrixadc_cs_established_connections_count"],
             ["responsebytesrate", "citrixadc_cs_response_bytes_received_rate"]
         ],
+
+        "enumasinfo":[
+            ["state", "citrixadc_cs_state"]
+        ],
+
         "labels": [
             ["name", "citrixadc_cs_name"],
-            ["type", "citrixadc_cs_type"],
-            ["state", "citrixadc_cs_state"]
+            ["type", "citrixadc_cs_type"]
         ]
     },
 
@@ -521,14 +534,16 @@
             ["inactsvcs", "citrixadc_k8s_ing_lb_inactive_services_count"],
             ["svrbusyerrrate", "citrixadc_k8s_ing_lb_busy_error_rate"]
         ],
+        "enumasinfo":[
+            ["state", "citrixadc_k8s_ing_lb_state"]
+        ],
 
         "labels": [
             ["name", "citrixadc_k8s_ing_lb_ingress_name"],
             ["name", "citrixadc_k8s_ing_lb_ingress_port"],
             ["name", "citrixadc_k8s_ing_lb_service_name"],
             ["name", "citrixadc_k8s_ing_lb_service_port"],
-            ["type", "citrixadc_k8s_ing_lb_type"],
-            ["state", "citrixadc_k8s_ing_lb_state"]
+            ["type", "citrixadc_k8s_ing_lb_type"]
         ]
     },
 
@@ -557,11 +572,15 @@
             ["sslctxsessionhitsrate", "citrixadc_sslvserver_session_hits_rate"]
         ],
 
+        "enumasinfo":[
+            ["state", "citrixadc_sslvserver_state"]
+        ],
+
         "labels": [
             ["vservername", "citrixadc_sslvserver_name"],
             ["type", "citrixadc_sslvserver_type"],
-            ["primaryipaddress", "citrixadc_sslvserver_ip"],
-            ["state", "citrixadc_sslvserver_state"]
+            ["primaryipaddress", "citrixadc_sslvserver_ip"]
+            
         ]
     },
 
@@ -583,10 +602,15 @@
             ["vsvrservicehitsrate", "citrixadc_service_gslbservice_hits_rate"]
 
         ],
+
+        "enumasinfo" : [
+            ["state","citrixadc_gslbservice_state"]
+        ],
+
         "labels": [
             ["servicename","citrixadc_gslbservice_name"],
-            ["servicetype","citrixadc_gslbservice_type"],
-            ["state","citrixadc_gslbservice_state"]
+            ["servicetype","citrixadc_gslbservice_type"]
+            
         ]
 
     },
@@ -621,10 +645,14 @@
             ["responsesrate", "citrixadc_service_gslbservice_responses_rate"],
             ["responsesbyterate", "citrixadc_service_gslbservice_responses_bytes_rate"]
         ],
+
+        "enumasinfo":[
+            ["state","citrixadc_auth_state"]
+        ],
+
         "labels": [
             ["name","citrixadc_auth_name"],
-            ["type","citrixadc_auth_type"],
-            ["state","citrixadc_auth_state"]
+            ["type","citrixadc_auth_type"]
         ]
     },
 
@@ -644,7 +672,7 @@
 
     "nsaptlicense": {
         "counters": [
-            ["daystoexpiration","citrixadc_aptlicense_name"]
+            ["daystoexpiration","citrixadc_aptlicense_daystoexpiration"]
         ],
         "labels": [
             ["serialno","citrixadc_aptlicense_serialno"],
