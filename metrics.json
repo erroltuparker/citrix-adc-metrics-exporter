@@ -297,10 +297,13 @@
             ["trunkpktstransmittedrate", "citrixadc_interface_trunk_packets_transmitted_rate"]
         ],
 
+        "enumasinfo": [
+            ["curintfstate", "citrixadc_interface_state"]
+        ],
+
         "labels": [
             ["interfacealias", "citrixadc_interface_alias"],
-            ["id", "citrixadc_interface_id"],
-            ["curlinkstate", "citrixadc_interface_state"]
+            ["id", "citrixadc_interface_id"]
         ]
     },
 
@@ -626,14 +629,26 @@
     },
 
     "nslicense": {
+        "counters": [
+            ["daystoexpiration","citrix_license_daystoexpiration"]
+        ],
         "gauges": [
             ["f_sslvpn_users", "citrixadc_license_sslvpn_users"],
-            ["f_ica_users", "citrixadc_license_ica_users"],
-            ["daystoexpiration","citrix_license_daystoexpiration"]
+            ["f_ica_users", "citrixadc_license_ica_users"]
         ],
         "labels":[
             ["licensingmode","citrixadc_license_mode"]
         ]
 
-    } 
+    },
+
+    "nsaptlicense": {
+        "counters": [
+            ["daystoexpiration","citrixadc_aptlicense_name"]
+        ],
+        "labels": [
+            ["serialno","citrixadc_aptlicense_serialno"],
+            ["name","citrixadc_aptlicense_name"]
+        ]
+    }
 }
