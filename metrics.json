@@ -626,7 +626,7 @@
             ["hapktrxrate","citrixadc_hanode_heartbeatpkt_received_rate"],
             ["hapkttxrate","citrixadc_hanode_heartbeatpkt_sent_rate"]
         ],
-        "labels": [
+        "enumasinfo": [
             ["hacurstatus","citrixadc_hanode_status"],
             ["hacurstate","citrixadc_hanode_state"],
             ["hacurmasterstate","citrixadc_hanode_masterstate"]
