@@ -387,7 +387,7 @@ class CitrixAdcCollector(object):
                         label_values = [self.nsip]
                     try:
                         en.add_metric(label_values, dict({
-                            ns_metric_name: data_item[ns_metric_name]}
+                            prom_metric_name: data_item[ns_metric_name]}
                         ))
                     except Exception as e:
                         logger.error('Caught exception while adding enumasinfo {} to {}: {}'.format(ns_metric_name, entity_name, str(e)))
