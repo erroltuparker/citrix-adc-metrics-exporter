@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+from typing import Mapping
 import yaml
 import json
 import time
@@ -9,7 +10,7 @@ import requests
 import argparse
 import sys
 from prometheus_client import start_http_server
-from prometheus_client.core import GaugeMetricFamily, CounterMetricFamily, REGISTRY
+from prometheus_client.core import GaugeMetricFamily, CounterMetricFamily, REGISTRY, InfoMetricFamily
 from urllib3.exceptions import InsecureRequestWarning
 from urllib3.exceptions import SubjectAltNameWarning
 from requests.auth import HTTPBasicAuth
@@ -355,6 +356,43 @@ class CitrixAdcCollector(object):
                         logger.error('Caught exception while adding counter {} to {}: {}'.format(ns_metric_name, entity_name, str(e)))
 
                 yield c
+
+            for ns_metric_name, prom_metric_name in entity.get('enumasinfo', []):
+                en = InfoMetricFamily(
+                    prom_metric_name, ns_metric_name, labels=label_names)
+                for data_item in entity_stats:
+                    if not data_item:
+                        continue
+
+                    if ns_metric_name not in data_item.keys():
+                        logger.info('EnumAsInfo stats {} not enabled for entity: {}'.format(ns_metric_name, entity_name))
+                        break
+
+                    if('labels' in entity.keys()):
+                        label_values = [data_item[key]
+                                        for key in [v[0] for v in entity['labels']]]
+
+                        # populate and update k8s_ingress_lbvs metrics if in k8s-CIC enviroment
+                        if entity_name == "k8s_ingress_lbvs":
+                            if os.environ.get('KUBERNETES_SERVICE_HOST') is not None:
+                                prefix_match = self.update_lbvs_label(
+                                    label_values, lbvs_dict, log_prefix_match)
+                                if not prefix_match:
+                                    log_prefix_match = False
+                                    continue
+                            else:
+                                continue
+                        label_values.append(self.nsip)
+                    else:
+                        label_values = [self.nsip]
+                    try:
+                        en.add_metric(label_values, dict({
+                            ns_metric_name: data_item[ns_metric_name]}
+                        ))
+                    except Exception as e:
+                        logger.error('Caught exception while adding enumasinfo {} to {}: {}'.format(ns_metric_name, entity_name, str(e)))
+
+                yield en
 
             # Provide collected metric to Prometheus as a gauge
             for ns_metric_name, prom_metric_name in entity.get('gauges', []):
